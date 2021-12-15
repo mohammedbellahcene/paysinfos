@@ -20,6 +20,9 @@ const App = () => {
       "DATAS RECUPEREES APRES ATTENTE DU AWAIT:",
       response.data.results
     );
+    console.log(
+      "DATAS RECUPEREES APRES ATTENTE DU AWAIT:",
+      response.data.results);
     setData(response.data.results);
   };
 
@@ -33,18 +36,29 @@ const App = () => {
   useEffect(() => {
     fetchData();
   }, []);
+  const urlImgPrefix = "https://image.tmdb.org/t/p/w370_and_h556_bestv2";
 
   return (
-    <div style={{ fontSize: "30px" }}>
-      BONJOUR
-      <span>PAGE</span>
+    <div  className="container">
+     {/*BONJOUR 
+      <span>PAGE</span>*/ } 
       {/* Cette ternaire nous permet de n'afficher data QUE si il est rempli.
       Donc au chargement de la page, pendant 0.5 secondes d'attente de retour de l'appel axios, on affiche "en attente". En bonus, affichez une roue de chargement `a la place de ce "EN ATTENTE" */}
       {data
         ? data.map((film, i) => {
             // ne pas oublier d'associer une key à chaque element, meme si ça semble ne pas nous etre utile, sinon react nous sort un warning
             // i représente la position du film courant dans le tableau
-            return <div key={i}>{film.original_title}</div>;
+            return <div key={i} className="cardfilm">
+              
+              <div className="poster_path"><img src={urlImgPrefix+film.poster_path} alt=""/></div>
+              <div className="description">
+                  <div className="original_title">{film.original_title}</div>
+                  <div className="release_date">{film.release_date}</div>
+              
+                  <div className="overview">{film.overview}</div>
+              </div>
+
+              </div>;
           })
         : "EN ATTENTE"}
     </div>

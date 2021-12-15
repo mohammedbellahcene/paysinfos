@@ -1,0 +1,84 @@
+.container{
+    display: flex;
+    justify-content:center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+   
+    gap: 15px;
+    font-size: 16px;
+  
+}
+
+
+
+
+.cardfilm{
+    display:flex;
+    border:2px solid black;
+    width: 40%;
+    height:20vw;
+    justify-content:space-between ;
+    column-gap: 10px;
+    box-shadow: -5px 5px gray;
+    
+    
+    
+    
+}
+.poster_path{
+    width: 30%;
+    height: auto;
+    
+    
+}
+.poster_path img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.description{
+    display: flex;
+    flex-direction: column;
+    width:70%;
+
+
+
+    
+    row-gap: 5px;
+}
+.original_title{
+    font-weight: bold;
+}
+.overview{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+@media screen and (max-width:1024px) {
+
+    .container{
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items: center;
+        
+        margin-top: 50px;
+        font-size: 0.57rem;
+       
+        gap: 15px;
+      
+    }
+    .cardfilm{
+        display:flex;
+        border:2px solid black;
+        width: 90%;
+        height:40vw;
+        justify-content:space-between ;
+        column-gap: 10px;
+        box-shadow: -5px 5px gray;
+        
+        
+        
+        
+    }
+    
+}
