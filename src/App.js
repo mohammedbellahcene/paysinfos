@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import axios from "axios";
 
 function App() {
+  let response = "hello";
+
+  const fetchData = async () => {
+    response = await axios.get(
+      "https://api-allocine.herokuapp.com/api/movies/upcoming"
+    );
+    // ATTENTE
+    // ICI REPONSE EST BIEN REMPLI
+  };
+
+  fetchData();
+
+  console.log("LA REPONSE SANS ATTENTE", response);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      BONJOUR
+      {response}
     </div>
   );
 }
