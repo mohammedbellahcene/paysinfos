@@ -5,16 +5,17 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 //import { Link } from "react-router-dom";
 const App = () => {
+  
+  
+  const url = "https://restcountries.com/v3.1/all";
+
   // ce state contiendra toutes les data récupérees par l'appel axios
-  //const url2 = "https://api-allocine.herokuapp.com/api/movies/popular";
-  const url1 = "https://restcountries.com/v3.1/all";
-  //const url3 = "https://api-allocine.herokuapp.com/api/movies/top_rated";
+  
   const [data, setData] = useState(null);
   const [page, setPage] = useState(1);
-  //const [url, setUrl] = useState(url1);
   const [onmodal, setOnmodal] = useState(false)
   const [position, setPosition] = useState(-1)
- 
+  const [term, setTerm] = useState("");
 
 
 
@@ -25,7 +26,7 @@ const App = () => {
   // On ne peut utiliser AWAIT QUE DANS UNE FONCTION DECLAREE AVEC ASYNC
   const fetchData = async () => {
     const response = await axios.get(
-      url1
+      url
     );
 
     console.log(
@@ -55,6 +56,12 @@ const App = () => {
         <button onClick={() => !(page > 62) && setPage(page + 1)}>+</button>
         <span>{page}</span>
         <button onClick={() => !(page < 2) && setPage(page - 1)} >-</button>
+        <input  type="text"  value={term} class="search" placeholder="rechercher un pays" onChange={event => {
+          
+          setTerm(event.target.value);
+          console.log(term);
+          setPage(1);
+        }} ></input>
       </div>
 
       <div onClick={() => { setOnmodal(false) }} className={onmodal ? "on" : "off"} >
@@ -82,12 +89,12 @@ const App = () => {
 
         {/* Cette ternaire nous permet de n'afficher data QUE si il est rempli.
       Donc au chargement de la page, pendant 0.5 secondes d'attente de retour de l'appel axios, on affiche "en attente". En bonus, affichez une roue de chargement `a la place de ce "EN ATTENTE" */}
-        {data
-          ? data.slice(4*page-4,4*page).map((pays, i) => {
+        {data.sort((a,b)=>a.name.common.localeCompare(b.name.common))
+          ? data.filter(data=>data.name.common.includes(term)).slice(4*page-4,4*page).map((pays, i) => {
             // ne pas oublier d'associer une key à chaque element, meme si ça semble ne pas nous etre utile, sinon react nous sort un warning
             // i représente la position du film courant dans le tableau
 
-            return <div key={i} className="cardpays" onClick={() => { setOnmodal(true); setPosition(i+(page*4-4)) }} >
+            return <div key={i} className="cardpays" onClick={() => { setOnmodal(true); data.filter(data=>data.name.common.includes(term))? setPosition(data.indexOf(pays)): setPosition(i+(page*4-4)) }} >
 
               
               <div className="pays_flags"><img src={pays.flags.png} alt="" /></div>
