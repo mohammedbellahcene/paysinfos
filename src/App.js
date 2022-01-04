@@ -62,13 +62,13 @@ const App = () => {
         <div className="modalimagecontainer">
           <img src={!(position === -1) &&  data[position].flags.png} alt="" />
         </div>
-        <span className="titre">{!(position === -1) && data[position].name.common}</span>
-        <span className="titre">Capital : {!(position === -1) && data[position].capital}</span>
-        <span className="titre">Region : {!(position === -1) && data[position].region}</span>
-        <span className="titre">Area : {!(position === -1) && data[position].area} Km2</span>
-        <span className="titre">Population : {!(position === -1) && data[position].population} habitants </span>
+        <span className="pays">{!(position === -1) && data[position].name.common}</span>
+        <span className="pays">Capital : {!(position === -1) && data[position].capital}</span>
+        <span className="pays">Region : {!(position === -1) && data[position].region}</span>
+        <span className="pays">Area : {!(position === -1) && data[position].area} Km2</span>
+        <span className="pays">Population : {!(position === -1) && data[position].population} habitants </span>
         
-        <a href={!(position === -1) && data[position].maps.googleMaps} target="" >{!(position === -1) && data[position].maps.googleMaps}</a>
+        <a href={!(position === -1) && data[position].maps.googleMaps} target="_blank"  >{!(position === -1) && data[position].maps.googleMaps}</a>
         
 
         
@@ -87,11 +87,11 @@ const App = () => {
             // ne pas oublier d'associer une key à chaque element, meme si ça semble ne pas nous etre utile, sinon react nous sort un warning
             // i représente la position du film courant dans le tableau
 
-            return <div key={i} className="cardfilm" onClick={() => { setOnmodal(true); setPosition(i+(page*4-4)) }} >
+            return <div key={i} className="cardpays" onClick={() => { setOnmodal(true); setPosition(i+(page*4-4)) }} >
 
               
-              <div className="poster_path"><img src={pays.flags.png} alt="" /></div>
-              <div className="original_title">{pays.name.common}{ pays.maps.googleMaps } </div>
+              <div className="pays_flags"><img src={pays.flags.png} alt="" /></div>
+              <div className="pays_name">{pays.name.common} </div>
                
 
               
