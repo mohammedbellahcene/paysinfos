@@ -50,13 +50,13 @@ const App = () => {
 
   return (
     <div className="pageprincipal">
-      bonjour le monde
+      
       <div className="pagination">
-
+        <h1>Pays infos</h1>
         <button onClick={() => !(page > 62) && setPage(page + 1)}>+</button>
         <span>{page}</span>
         <button onClick={() => !(page < 2) && setPage(page - 1)} >-</button>
-        <input  type="text"  value={term} class="search" placeholder="rechercher un pays" onChange={event => {
+        <input  type="text"  value={term} class="search" placeholder="rechercher un pays &#128269; " onChange={event => {
           
           setTerm(event.target.value);
           console.log(term);
