@@ -3,7 +3,7 @@ import "./App.css";
 
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 const App = () => {
   // ce state contiendra toutes les data récupérees par l'appel axios
   //const url2 = "https://api-allocine.herokuapp.com/api/movies/popular";
@@ -14,7 +14,7 @@ const App = () => {
   //const [url, setUrl] = useState(url1);
   const [onmodal, setOnmodal] = useState(false)
   const [position, setPosition] = useState(-1)
-  var lien;
+ 
 
 
 
@@ -67,9 +67,8 @@ const App = () => {
         <span className="titre">Region : {!(position === -1) && data[position].region}</span>
         <span className="titre">Area : {!(position === -1) && data[position].area} Km2</span>
         <span className="titre">Population : {!(position === -1) && data[position].population} habitants </span>
-        <span>
-        {!(position === -1) && data[position].maps.googleMaps}
-        </span>
+        
+        <a href={!(position === -1) && data[position].maps.googleMaps} target="" >{!(position === -1) && data[position].maps.googleMaps}</a>
         
 
         
