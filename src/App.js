@@ -32,7 +32,7 @@ const App = () => {
     console.log(
       "DATAS RECUPEREES APRES ATTENTE DU AWAIT:",
       response.data);
-    setData(response.data);
+    setData(response.data.sort((a,b)=>a.name.common.localeCompare(b.name.common)));
 
   };
 
@@ -89,7 +89,7 @@ const App = () => {
 
         {/* Cette ternaire nous permet de n'afficher data QUE si il est rempli.
       Donc au chargement de la page, pendant 0.5 secondes d'attente de retour de l'appel axios, on affiche "en attente". En bonus, affichez une roue de chargement `a la place de ce "EN ATTENTE" */}
-        {data.sort((a,b)=>a.name.common.localeCompare(b.name.common))
+        {data
           ? data.filter(data=>data.name.common.includes(term)).slice(4*page-4,4*page).map((pays, i) => {
             // ne pas oublier d'associer une key à chaque element, meme si ça semble ne pas nous etre utile, sinon react nous sort un warning
             // i représente la position du film courant dans le tableau
