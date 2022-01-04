@@ -1,8 +1,9 @@
 
 import "./App.css";
+
 import axios from "axios";
 import { useState, useEffect } from "react";
-
+import { Link } from "react-router-dom";
 const App = () => {
   // ce state contiendra toutes les data récupérees par l'appel axios
   //const url2 = "https://api-allocine.herokuapp.com/api/movies/popular";
@@ -13,7 +14,7 @@ const App = () => {
   //const [url, setUrl] = useState(url1);
   const [onmodal, setOnmodal] = useState(false)
   const [position, setPosition] = useState(-1)
-
+  var lien;
 
 
 
@@ -51,9 +52,30 @@ const App = () => {
       bonjour le monde
       <div className="pagination">
 
-        <button onClick={() => !(page > 4) && setPage(page + 1)}>+</button>
+        <button onClick={() => !(page > 62) && setPage(page + 1)}>+</button>
         <span>{page}</span>
-        <button onClick={() => !(page < 2) && setPage(page - 1)} >-</button></div>
+        <button onClick={() => !(page < 2) && setPage(page - 1)} >-</button>
+      </div>
+
+      <div onClick={() => { setOnmodal(false) }} className={onmodal ? "on" : "off"} >
+        <span className="close" onClick={() => { setOnmodal(false) }}>X</span>
+        <div className="modalimagecontainer">
+          <img src={!(position === -1) &&  data[position].flags.png} alt="" />
+        </div>
+        <span className="titre">{!(position === -1) && data[position].name.common}</span>
+        <span className="titre">Capital : {!(position === -1) && data[position].capital}</span>
+        <span className="titre">Region : {!(position === -1) && data[position].region}</span>
+        <span className="titre">Area : {!(position === -1) && data[position].area} Km2</span>
+        <span className="titre">Population : {!(position === -1) && data[position].population} habitants </span>
+        <span>
+        {!(position === -1) && data[position].maps.googleMaps}
+        </span>
+        
+
+        
+        
+      </div>
+        
 
       <div className="container">
 
@@ -62,14 +84,21 @@ const App = () => {
         {/* Cette ternaire nous permet de n'afficher data QUE si il est rempli.
       Donc au chargement de la page, pendant 0.5 secondes d'attente de retour de l'appel axios, on affiche "en attente". En bonus, affichez une roue de chargement `a la place de ce "EN ATTENTE" */}
         {data
-          ? data.map((pays, i) => {
+          ? data.slice(4*page-4,4*page).map((pays, i) => {
             // ne pas oublier d'associer une key à chaque element, meme si ça semble ne pas nous etre utile, sinon react nous sort un warning
             // i représente la position du film courant dans le tableau
 
-            return <div key={i} className="cardfilm" onClick={() => { setOnmodal(true); setPosition(i) }} >
+            return <div key={i} className="cardfilm" onClick={() => { setOnmodal(true); setPosition(i+(page*4-4)) }} >
 
-
+              
               <div className="poster_path"><img src={pays.flags.png} alt="" /></div>
+              <div className="original_title">{pays.name.common}{ pays.maps.googleMaps } </div>
+               
+
+              
+
+
+              
 
 
 
@@ -77,6 +106,7 @@ const App = () => {
 
           })
           : "EN ATTENTE"}
+          
       </div>
     </div>
 
