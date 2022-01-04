@@ -13,7 +13,7 @@
     column-gap: 5px;
     width: 100vw;
     height: 80px;
-    margin-top: 0px;
+    margin-top:0px;
     
     background-color: yellow;
 }
@@ -113,7 +113,7 @@ h1{
 .on{
     display:flex;
     flex-direction: column;
-    justify-content:start;
+    justify-content:center;
     align-items: center;
     row-gap: 20px;
     width:100vw;
@@ -125,7 +125,7 @@ h1{
     font-size: 1.5rem;
     background-color: rgba(0, 0, 0, 0.8);
     padding-top: 30px;
-    color:white;
+    bottom: 0px;
     
    
 
@@ -147,7 +147,7 @@ h1{
 }
 .close{
     position: absolute;
-    top: 5px;
+    top: 30px;
     right: 10px;
     color:white;
 }
