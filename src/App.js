@@ -52,10 +52,9 @@ const App = () => {
     <div className="pageprincipal">
       
       <div className="pagination">
-        <h1>Pays infos</h1>
-        <button onClick={() => !(page > 62) && setPage(page + 1)}>+</button>
-        <span>{page}</span>
-        <button onClick={() => !(page < 2) && setPage(page - 1)} >-</button>
+        <h1><span className="globe">🌏</span>Pays infos</h1>
+        
+        
         <input  type="text"  value={term} class="search" placeholder="rechercher un pays &#128269; " onChange={event => {
           
           setTerm(event.target.value);
@@ -63,6 +62,12 @@ const App = () => {
           setPage(1);
         }} ></input>
       </div>
+      <div className="pagenumber">
+          <button onClick={() => !(page < 2) && setPage(page - 1)} >&lt;</button>
+          <span>{page}</span>
+          
+          <button onClick={() => !(page > 62) && setPage(page + 1)}>&gt;</button>
+        </div>
 
       <div onClick={() => { setOnmodal(false) }} className={onmodal ? "on" : "off"} >
         <span className="close" onClick={() => { setOnmodal(false) }}>X</span>
@@ -74,6 +79,7 @@ const App = () => {
         <span className="pays">Region : {!(position === -1) && data[position].region}</span>
         <span className="pays">Area : {!(position === -1) && data[position].area} Km2</span>
         <span className="pays">Population : {!(position === -1) && data[position].population} habitants </span>
+        <span className="pays">CountryCode : {!(position === -1) && data[position].cca2}  </span>
         
         <a href={!(position === -1) && data[position].maps.googleMaps} target="_blank"  >{!(position === -1) && data[position].maps.googleMaps}</a>
         

@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 0px;
+    background-color: rgb(183, 183, 194);
 }
 .pagination{
     display: flex;
@@ -160,9 +161,32 @@ a{
 }
 button,input{
     font-size: 1.5rem;
-    border-radius: 5px;
+    border-radius: 15px;
 
+}
+button{
+    border:none;
+    background-color:white ;
+}
+button:hover{
+    cursor: pointer;
+    background-color: orangered;
 }
 span{
     font-size: 1.5rem;
+    font-weight: bold;
+}
+.globe{
+    display: inline-block;
+    font-size: 3rem;
+    font-weight: bold;
+    color:rgb(42, 52, 196);
+    animation: move 1s infinite;
+}
+@keyframes move {
+    100%{
+        
+        transform: rotate(360deg);
+    }
+    
 }
