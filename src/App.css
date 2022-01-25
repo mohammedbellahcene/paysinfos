@@ -90,7 +90,7 @@ cursor: pointer;
         justify-content:center;
         align-items: center;
         
-        margin-top: 50px;
+        margin-top: 5px;
         
        
         gap: 15px;
@@ -118,13 +118,13 @@ cursor: pointer;
        align-items: center;
        
         width: 100vw;
-        height: 200px;
+        height: 150px;
         margin-top:0px;
         
     
         
        
-        gap: 15px;
+    
 
     }
     h1{
@@ -191,6 +191,7 @@ button,input{
 button{
     border:none;
     background-color:white ;
+    margin: 15px;
 }
 button:hover{
     cursor: pointer;
