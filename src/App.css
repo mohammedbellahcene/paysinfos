@@ -82,7 +82,7 @@ cursor: pointer;
 .overview{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-@media screen and (max-width:1024px) {
+@media screen and (max-width:800px) {
 
     .container{
         display: flex;
@@ -91,7 +91,7 @@ cursor: pointer;
         align-items: center;
         
         margin-top: 50px;
-        font-size: 0.57rem;
+        
        
         gap: 15px;
       
@@ -101,7 +101,8 @@ cursor: pointer;
         border:2px solid black;
         width: 90%;
         height:40vw;
-        justify-content:space-between ;
+        justify-content:center ;
+        align-items: center;
         column-gap: 10px;
         box-shadow: -5px 5px gray;
         
@@ -109,8 +110,30 @@ cursor: pointer;
         
         
     }
+    .pagination{
+        display: flex;
+        
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+       
+        width: 100vw;
+        height: 200px;
+        margin-top:0px;
+        
+    
+        
+       
+        gap: 15px;
+
+    }
+    h1{
+        position:static;
+    }
+   
     
 }
+
 .on{
     display:flex;
     flex-direction: column;
